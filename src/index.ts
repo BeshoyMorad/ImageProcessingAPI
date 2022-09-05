@@ -1,9 +1,15 @@
-function Add(a: number, b: number): number {
-  return a + b;
-}
+import express from "express";
+import routers from "./routes/routes";
 
-const x = 5;
+const app = express();
+const port = process.env.PORT || 3000;
 
-console.log(x);
+app.use("/api", routers);
 
-export default Add;
+app.get("/", (req, res) => {
+  res.send("Welcome to Sizeha App");
+});
+
+app.listen(port, () => console.log(`Server running on port ${port}`));
+
+// http://localhost:3000/api/resize?fileName=fjord&width=200&height=200

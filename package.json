@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "build": "npx tsc",
-    "dev": "npm run build && nodemon src/index.ts",
+    "dev": "nodemon src/index.ts",
     "prod": "npm run build && nodemon dist/index.js",
     "test": "npx tsc && jasmine",
     "lint": "eslint ./src/.",
     "lint:fix": "eslint ./src/. --fix",
-    "format": "prettier --write 'src/**/*.ts'"
+    "format": "prettier --write src/**/*.ts"
   },
   "repository": {
     "type": "git",
