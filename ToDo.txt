@@ -1,0 +1,21 @@
+1- First initialize the project (install express, typescript, jasmine, eslint, prettier)
+    npm init -y
+    npm i typescript --save-dev
+    npm i express
+    npm i --save-dev @types/express
+    npm i --save-dev prettier
+    npx eslint --init
+    npm i --save-dev eslint
+    npm i --save-dev eslint-config-prettier
+    npm i --save-dev eslint-plugin-prettier
+    npm i supertest jasmine-spec-reporter jasmine
+    npm i --save-dev @types/jasmine
+
+2- File Stucture [middleware, utilities]
+
+Logic:
+======
+1- check the query params im a middleware if any input didn't exist [fileName, width, height]
+2- check if the image already processed before [image with that name, width, and height]
+3- if we found the image return it
+4- if we didn't find the image then process it and save it in the file [fileName_width_height.jpg]
