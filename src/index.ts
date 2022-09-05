@@ -12,4 +12,4 @@ app.get("/", (req, res) => {
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
 
-// http://localhost:3000/api/resize?fileName=fjord&width=200&height=200
+export default app;
