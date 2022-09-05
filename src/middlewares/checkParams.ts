@@ -2,40 +2,39 @@ import { Response, Request, NextFunction } from "express";
 
 //Middleware used to check the parameters of the request [fileName, width, height]
 export default (req: Request, res: Response, next: NextFunction) => {
-  const query = req.query;
+  const name = req.query.fileName as string;
+  const width = req.query.width as string;
+  const height = req.query.height as string;
 
   //check each parameter
-  let error = "";
+  let error = "Bad Request";
 
-  if (
-    query.fileName === undefined ||
-    query.fileName?.toString().trim() === ""
-  ) {
-    error += "Please determine fileName";
+  if (name === undefined || name.trim() === "") {
+    error += "<br>Please determine fileName";
   }
-  if (query.width === undefined || query.width?.toString().trim() === "") {
+  if (width === undefined || width.trim() === "") {
     error += "<br>Please determine width";
   }
-  if (query.height === undefined || query.height?.toString().trim() === "") {
+  if (height === undefined || height.trim() === "") {
     error += "<br>Please determine height";
   }
 
-  if (error === "") {
-    //All parameters here
-    // check if width and height are numbers
-    if (isNaN(Number(query.width))) {
+  if (error === "Bad Request") {
+    //All parameters have been sent
+    // check if width and height are numbers or not
+    if (isNaN(Number(width))) {
       error += "<br>Please enter a valid number for the width";
     }
-    if (isNaN(Number(query.height))) {
+    if (isNaN(Number(height))) {
       error += "<br>Please enter a valid number for the height";
     }
 
-    if (error === "") {
+    if (error === "Bad Request") {
       next();
     } else {
-      return res.send(error);
+      return res.status(400).send(error);
     }
   } else {
-    return res.send(error);
+    return res.status(400).send(error);
   }
 };
