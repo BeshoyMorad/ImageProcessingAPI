@@ -11,7 +11,9 @@ export default (req: Request, res: Response, next: NextFunction) => {
   if (fileNames.includes(image)) {
     console.log("found the image");
 
-    return res.sendFile(path.join(__dirname, `../../images/after/${image}`));
+    return res
+      .status(200)
+      .sendFile(path.join(__dirname, `../../images/after/${image}`));
   } else {
     //go to resize to process the image
     next();

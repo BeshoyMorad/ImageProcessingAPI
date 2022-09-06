@@ -29,12 +29,12 @@ export default (req: Request, res: Response) => {
       .resize(Number(req.query.width), Number(req.query.height))
       .toFile(outputPath, (err) => {
         if (err) {
-          console.log(err);
+          res.status(500).send("Image has failed to process");
         } else {
-          res.sendFile(outputPath);
+          res.status(200).sendFile(outputPath);
         }
       });
   } else {
-    res.send("Didn't find a image with that name");
+    res.status(404).send("Didn't find a image with that name");
   }
 };

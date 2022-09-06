@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000;
 app.use("/api", routers);
 
 app.get("/", (req, res) => {
-  res.send("Welcome to Sizeha App");
+  res.status(200).send("Welcome to Sizeha App");
 });
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
