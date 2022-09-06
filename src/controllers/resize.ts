@@ -11,7 +11,7 @@ export default async (req: Request, res: Response) => {
   const width = Number(req.query.width);
   const height = Number(req.query.height);
 
-  if (images.includes(fileName) + ".jpg") {
+  if (images.includes(fileName + ".jpg")) {
     const output = await imageResize(fileName, width, height);
 
     if (output !== "") {

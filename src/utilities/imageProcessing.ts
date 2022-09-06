@@ -13,8 +13,6 @@ function imageResize(
     `../../images/after/${fileName}_${width}_${height}.jpg`
   );
 
-  console.log("Resizing");
-
   //using Sharp documentation
   //LINK: https://sharp.pixelplumbing.com/api-resize
   return sharp(inputPath)
