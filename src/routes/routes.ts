@@ -5,6 +5,6 @@ import resize from "./resize";
 
 const routes = express.Router();
 
-routes.get("/resize", resize);
+routes.use("/resize", resize);
 
 export default routes;
