@@ -1,5 +1,6 @@
 import supertest from "supertest";
 import app from "../index";
+import foundFile from "../utilities/checkForFile";
 import path from "path";
 import fs from "fs";
 
@@ -15,9 +16,8 @@ describe("Testing resizing images", () => {
   it("Sending correct parameters and check if the image has been processed", async () => {
     //check if the file it should generate exists
     const imagesPath: string = path.join(__dirname, `../../images/after`);
-    const fileNames: string[] = fs.readdirSync(imagesPath);
 
-    if (fileNames.includes(`fjord_500_500.jpg`)) {
+    if (foundFile("fjord_500_500.jpg", "../../images/after")) {
       fs.unlinkSync(imagesPath + "/fjord_500_500.jpg");
     }
 
@@ -25,6 +25,6 @@ describe("Testing resizing images", () => {
       .get("/api/resize")
       .query({ fileName: "fjord", width: "500", height: "500" });
 
-    expect(fileNames).toContain("fjord_500_500.jpg");
+    expect(foundFile("fjord_500_500.jpg", "../../images/after")).toBeTrue();
   });
 });
