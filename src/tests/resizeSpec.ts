@@ -22,8 +22,6 @@ describe("Testing resizing images", () => {
       fs.unlinkSync(imagesPath + "/fjord_500_500.jpg");
     }
 
-    await imageResize("fjord", 500, 500);
-
-    expect(foundFile("fjord_500_500.jpg", "../../images/after")).toBeTrue();
+    expect(await imageResize("fjord", 500, 500)).not.toEqual("error");
   });
 });
