@@ -1,7 +1,11 @@
 import { Response, Request, NextFunction } from "express";
 
 //Middleware used to check the parameters of the request [fileName, width, height]
-export default (req: Request, res: Response, next: NextFunction) => {
+export default (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Response<unknown, Record<string, unknown>> | undefined => {
   const name: string = req.query.fileName as string;
   const width: string = req.query.width as string;
   const height: string = req.query.height as string;

@@ -22,7 +22,7 @@ function imageResize(
     .resize(width, height)
     .toFile(outputPath)
     .then(() => outputPath)
-    .catch((error) => error);
+    .catch(() => "error");
 }
 
 export { imageResize };

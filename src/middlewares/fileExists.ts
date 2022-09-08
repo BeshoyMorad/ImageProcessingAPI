@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import foundFile from "../utilities/checkForFile";
 import path from "path";
 
-export default (req: Request, res: Response, next: NextFunction) => {
+export default (req: Request, res: Response, next: NextFunction): void => {
   // check if an image with that width and height exists or no
   const image = `${req.query.fileName}_${req.query.width}_${req.query.height}.jpg`;
 
