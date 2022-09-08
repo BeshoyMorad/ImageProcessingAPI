@@ -21,12 +21,12 @@ export default (req: Request, res: Response, next: NextFunction) => {
 
   if (error === "Bad Request") {
     //All parameters have been sent
-    // check if width and height are numbers or not
-    if (isNaN(Number(width))) {
-      error += "<br>Please enter a valid number for the width";
+    //check if the width and height are positive integers
+    if (isNaN(Number(width)) || Number(width) <= 0) {
+      error += "<br>Please enter a positive integer for the width";
     }
-    if (isNaN(Number(height))) {
-      error += "<br>Please enter a valid number for the height";
+    if (isNaN(Number(height)) || Number(height) <= 0) {
+      error += "<br>Please enter a positive integer for the height";
     }
 
     if (error === "Bad Request") {
