@@ -3,6 +3,7 @@ import app from "../index";
 import foundFile from "../utilities/checkForFile";
 import path from "path";
 import fs from "fs";
+import { imageResize } from "../utilities/imageProcessing";
 
 const request = supertest(app);
 describe("Testing resizing images", () => {
@@ -13,7 +14,7 @@ describe("Testing resizing images", () => {
     expect(response.status).toBe(404);
   });
 
-  it("Sending correct parameters and check if the image has been processed", async () => {
+  it("Check if the image has been processed using imageResize method", async () => {
     //check if the file it should generate exists
     const imagesPath: string = path.join(__dirname, `../../images/after`);
 
@@ -21,9 +22,7 @@ describe("Testing resizing images", () => {
       fs.unlinkSync(imagesPath + "/fjord_500_500.jpg");
     }
 
-    await request
-      .get("/api/resize")
-      .query({ fileName: "fjord", width: "500", height: "500" });
+    await imageResize("fjord", 500, 500);
 
     expect(foundFile("fjord_500_500.jpg", "../../images/after")).toBeTrue();
   });
