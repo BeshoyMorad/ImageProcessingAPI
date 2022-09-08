@@ -4,7 +4,9 @@ import fs from "fs";
 
 export default (req: Request, res: Response, next: NextFunction) => {
   // check if an image with that width and height exists or no
-  const fileNames = fs.readdirSync(path.join(__dirname, `../../images/after/`));
+  const fileNames: string[] = fs.readdirSync(
+    path.join(__dirname, `../../images/after/`)
+  );
 
   const image = `${req.query.fileName}_${req.query.width}_${req.query.height}.jpg`;
 

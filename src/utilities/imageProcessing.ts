@@ -6,9 +6,12 @@ function imageResize(
   width: number,
   height: number
 ): Promise<string> {
-  const inputPath = path.join(__dirname, `../../images/before/${fileName}.jpg`);
+  const inputPath: string = path.join(
+    __dirname,
+    `../../images/before/${fileName}.jpg`
+  );
 
-  const outputPath = path.join(
+  const outputPath: string = path.join(
     __dirname,
     `../../images/after/${fileName}_${width}_${height}.jpg`
   );

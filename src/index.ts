@@ -1,12 +1,12 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import routers from "./routes/routes";
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 3000;
 
 app.use("/api", routers);
 
-app.get("/", (req, res) => {
+app.get("/", (req: Request, res: Response) => {
   res.status(200).send("Welcome to Sizeha App");
 });
 

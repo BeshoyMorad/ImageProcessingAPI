@@ -2,9 +2,9 @@ import { Response, Request, NextFunction } from "express";
 
 //Middleware used to check the parameters of the request [fileName, width, height]
 export default (req: Request, res: Response, next: NextFunction) => {
-  const name = req.query.fileName as string;
-  const width = req.query.width as string;
-  const height = req.query.height as string;
+  const name: string = req.query.fileName as string;
+  const width: string = req.query.width as string;
+  const height: string = req.query.height as string;
 
   //check each parameter
   let error = "Bad Request";
